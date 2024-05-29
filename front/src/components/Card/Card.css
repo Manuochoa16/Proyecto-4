@@ -1,0 +1,4 @@
+.card-custom-height {
+  height: calc(15vw);
+  max-height: calc(15vw);
+}

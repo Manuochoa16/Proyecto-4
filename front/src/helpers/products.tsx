@@ -18,7 +18,7 @@ const productsToPreload = [
     price: 999,
     stock: 10,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_809326-MLA46115014340_052021-O.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwtBpqgtkX0vBqIrUM7-m_1ADS850u-ILZ_Q&s",
     categoryId: 2,
   },
   {
@@ -29,7 +29,7 @@ const productsToPreload = [
     price: 799,
     stock: 10,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_809326-MLA46115014340_052021-O.webp",
+      "https://images.fravega.com/f300/f6b5e45559b9716ba2e6525fa9a2db56.jpg.webp",
     categoryId: 3,
   },
   {
@@ -40,7 +40,7 @@ const productsToPreload = [
     price: 399,
     stock: 10,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_809326-MLA46115014340_052021-O.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRec4GGiXxFxhPzBgXJ2tmo1ryKwrHOMWuyeg&s",
     categoryId: 4,
   },
   {
@@ -51,7 +51,7 @@ const productsToPreload = [
     price: 249,
     stock: 10,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_809326-MLA46115014340_052021-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_655692-MLA54549532369_032023-O.webp",
     categoryId: 5,
   },
   {
@@ -62,7 +62,7 @@ const productsToPreload = [
     price: 99,
     stock: 10,
     image:
-      "https://http2.mlstatic.com/D_NQ_NP_809326-MLA46115014340_052021-O.webp",
+      "https://images.fravega.com/f300/6b908eb64586a4a9c0bd19a2b88a3a9e.jpg.webp",
     categoryId: 6,
   },
 ];

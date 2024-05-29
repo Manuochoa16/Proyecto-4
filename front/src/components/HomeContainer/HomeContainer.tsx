@@ -1,14 +1,11 @@
 import React from "react";
 import productsToPreload from "@/helpers/products";
-import Card from "../Card/Card";
+import Cards from "../Cards/Cards";
 
 const HomeContainer = () => {
   return (
     <div>
-      {productsToPreload &&
-        productsToPreload?.map((product) => {
-          return <Card key={product.id} {...product} />;
-        })}
+      <Cards products={productsToPreload} />
     </div>
   );
 };
