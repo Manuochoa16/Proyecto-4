@@ -5,17 +5,17 @@ import {
   RegisterProps,
 } from "@/types";
 
-export function validateLoginForm(values: LoginProps) {
+export function validateLoginForm(values: LoginProps): LoginErrorProps {
   let errors: LoginErrorProps = {};
 
-  //Validación para mail de Login
+  // Validación para mail de Login
   if (!values.email) {
     errors.email = "El Email es requerido";
   } else if (!/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,6}$/.test(values.email)) {
     errors.email = "El Email no es válido";
   }
 
-  //Validación para Password de Login
+  // Validación para Password de Login
   if (!values.password) {
     errors.password = "La contraseña es requerida";
   } else if (values.password.length < 8) {
@@ -29,9 +29,13 @@ export function validateLoginForm(values: LoginProps) {
   } else if (!/[\W_]/.test(values.password)) {
     errors.password = "La contraseña debe tener al menos un carácter especial";
   }
+
+  return errors;
 }
 
-export function validateRegisterForm(values: RegisterProps) {
+export function validateRegisterForm(
+  values: RegisterProps
+): RegisterErrorProps {
   let errors: RegisterErrorProps = {};
 
   // Validación de Email

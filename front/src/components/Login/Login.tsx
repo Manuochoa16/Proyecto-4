@@ -8,10 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [errorUser, setErrorUser] = useState<LoginErrorProps>({
-    email: "",
-    password: "",
-  });
+  const [errorUser, setErrorUser] = useState<LoginErrorProps>({});
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDataUser({
@@ -19,9 +16,9 @@ const Login = () => {
       [event.target.name]: event.target.value,
     });
   };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     console.log("Submit exitoso");
   };
 
@@ -31,43 +28,66 @@ const Login = () => {
   }, [dataUser]);
 
   return (
-    <div>
-      <div>
-        <h2>Ingresa</h2>
+    <div className="flex items-center justify-center">
+      <div className="w-full max-w-lg p-8 bg-gray-700 bg-opacity-50 rounded-lg">
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold text-center text-white">Ingresa</h2>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="email-adress"
+              className="block text-sm font-medium text-white"
+            >
+              Email
+            </label>
+            <input
+              id="email-adress"
+              name="email"
+              type="email"
+              value={dataUser.email}
+              required
+              onChange={handleChange}
+              placeholder="mail@mail.com"
+              className="w-full p-2 mt-2 bg-gray-600 text-white rounded focus:outline-none focus:ring-2 focus:ring-red-600"
+            />
+            {errorUser.email && (
+              <p className="mt-2 text-red-500 text-sm">{errorUser.email}</p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
+              Contraseña
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={dataUser.password}
+              required
+              onChange={handleChange}
+              placeholder="********"
+              className="w-full p-2 mt-2 bg-gray-600 text-white rounded focus:outline-none focus:ring-2 focus:ring-red-600"
+            />
+            {errorUser.password && (
+              <p className="mt-2 text-red-500 text-sm">{errorUser.password}</p>
+            )}
+          </div>
+
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email-addres">Email</label>
-          <input
-            id="email-adress"
-            name="email"
-            type="email"
-            value={dataUser.email}
-            required
-            onChange={handleChange}
-            placeholder="mail@mail.com"
-          />
-          {errorUser.email && <p>{errorUser.email}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="password">Contraseña</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={dataUser.password}
-            required
-            onChange={handleChange}
-            placeholder="********"
-          />
-          {errorUser.password && <p>{errorUser.password}</p>}
-        </div>
-
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
     </div>
   );
 };

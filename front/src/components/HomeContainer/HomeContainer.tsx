@@ -1,11 +1,12 @@
 import React from "react";
-import productsToPreload from "@/helpers/products";
 import Cards from "../Cards/Cards";
+import { getProductsDB } from "@/helpers/product.helper";
 
-const HomeContainer = () => {
+const HomeContainer = async () => {
+  const products = await getProductsDB();
   return (
     <div>
-      <Cards products={productsToPreload} />
+      <Cards products={products} />
     </div>
   );
 };
