@@ -1,9 +1,12 @@
 "use client";
+import { register } from "@/helpers/auth.helper";
 import { validateRegisterForm } from "@/helpers/formValidation";
 import { RegisterErrorProps, RegisterProps } from "@/types";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const router = useRouter();
   const [dataUser, setDataUser] = useState<RegisterProps>({
     email: "",
     password: "",
@@ -11,7 +14,13 @@ const Register = () => {
     address: "",
     phone: "",
   });
-  const [errorUser, setErrorUser] = useState<RegisterErrorProps>({});
+  const [errorUser, setErrorUser] = useState<RegisterErrorProps>({
+    email: "",
+    password: "",
+    name: "",
+    address: "",
+    phone: "",
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDataUser({
@@ -20,9 +29,17 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Submit exitoso");
+    try {
+      const response = await register(dataUser);
+      console.log(response);
+
+      alert("Registro exitoso");
+      router.push("/login");
+    } catch (error: any) {
+      throw new Error(error);
+    }
   };
 
   useEffect(() => {

@@ -1,9 +1,12 @@
 "use client";
+import { login } from "@/helpers/auth.helper";
 import { validateLoginForm } from "@/helpers/formValidation";
 import { LoginErrorProps, LoginProps } from "@/types";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 const Login = () => {
+  const router = useRouter();
   const [dataUser, setDataUser] = useState<LoginProps>({
     email: "",
     password: "",
@@ -17,9 +20,21 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Submit exitoso");
+    try {
+      const response = await login(dataUser);
+      const { token, user } = response;
+
+      localStorage.setItem(
+        "userSession",
+        JSON.stringify({ token: token, userData: user })
+      );
+      alert("Ingreso exitoso");
+      router.push("/");
+    } catch (error: any) {
+      throw new Error(error);
+    }
   };
 
   useEffect(() => {
@@ -85,6 +100,11 @@ const Login = () => {
             >
               Enviar
             </button>
+
+            <div>
+              <p>No estas registrado?</p>
+              <button>Registrate acá</button>
+            </div>
           </div>
         </form>
       </div>
