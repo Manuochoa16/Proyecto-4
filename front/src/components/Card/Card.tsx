@@ -26,6 +26,11 @@ const Card: React.FC<IProduct> = ({
             Category: {categoriesToPreLoad[categoryId].name}
           </p>
           <p className="text-gray-700">Stock: {stock}</p>
+          <div>
+            <button className="px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600">
+              Ver
+            </button>
+          </div>
           <div className="text-right text-red-600 text-xl font-bold mt-4">
             ${price}
           </div>

@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@/context/AuthContext";
 import { login } from "@/helpers/auth.helper";
 import { validateLoginForm } from "@/helpers/formValidation";
 import { LoginErrorProps, LoginProps } from "@/types";
@@ -7,6 +8,7 @@ import React, { useState, useEffect } from "react";
 
 const Login = () => {
   const router = useRouter();
+  const { userData, setUserData } = useAuth();
   const [dataUser, setDataUser] = useState<LoginProps>({
     email: "",
     password: "",
@@ -26,10 +28,8 @@ const Login = () => {
       const response = await login(dataUser);
       const { token, user } = response;
 
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({ token: token, userData: user })
-      );
+      setUserData({ token, userData: user });
+
       alert("Ingreso exitoso");
       router.push("/");
     } catch (error: any) {

@@ -1,17 +1,16 @@
 "use client";
+import { useAuth } from "@/context/AuthContext";
 import { getProductById } from "@/helpers/product.helper";
 import { IProduct, userSession } from "@/types";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const DetailProduct = ({ params }: { params: { productId: string } }) => {
+  const router = useRouter();
   const [product, setProduct] = useState<IProduct>();
-  const [userData, setUserData] = useState<userSession>();
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const userData = localStorage.getItem("userSession");
-      setUserData(JSON.parse(userData!));
-    }
+  const { userData } = useAuth();
 
+  useEffect(() => {
     const fetchData = async () => {
       const product = await getProductById(params.productId);
       setProduct(product);
@@ -20,8 +19,25 @@ const DetailProduct = ({ params }: { params: { productId: string } }) => {
     fetchData();
   }, []);
 
-  const handleAddToCart = () => {
-    if (!userData?.token) alert("No ingresaste a tu cuenta");
+  const handleAddToCart = (e: any) => {
+    if (!userData?.token) {
+      alert("No ingresaste a tu cuenta");
+    } else {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const productExist = cart.some((product: IProduct) => {
+        if (product.id === Number(e?.target?.id!)) return true;
+        return false;
+      });
+      if (productExist) {
+        alert("Estos son los productos de tu carrito");
+        router.push("/cart");
+      } else {
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Producto agregado a tu carrito");
+        router.push("/cart");
+      }
+    }
   };
 
   return (
@@ -33,6 +49,7 @@ const DetailProduct = ({ params }: { params: { productId: string } }) => {
         <p>Price: {product?.price}</p>
         <p>Stock: {product?.stock}</p>
         <button
+          id={product?.id.toString()}
           onClick={handleAddToCart}
           className="rounded-sm bg-white hover:bg-gray-400 text-black p-4 mt-2"
         >

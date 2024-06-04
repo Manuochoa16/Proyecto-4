@@ -16,8 +16,6 @@ const Navbar = () => {
     }
   }, [pathname]);
 
-  console.log(pathname);
-
   return (
     <nav className="bg-gray-800 bg-opacity-75 text-white p-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
@@ -43,7 +41,7 @@ const Navbar = () => {
           {userData?.token ? (
             <div>
               <Link href="/dashboard">
-                <p>Bienvenido {userData?.userData.name}</p>
+                <p>Bienvenido {userData?.userData?.name}</p>
               </Link>
             </div>
           ) : (
