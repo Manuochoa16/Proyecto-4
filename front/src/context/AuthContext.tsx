@@ -1,22 +1,18 @@
 "use client";
 
 import { userSession } from "@/types";
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  Children,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthContextProps {
   userData: userSession | null;
   setUserData: (userData: userSession | null) => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({
   userData: null,
   setUserData: () => {},
+  logout: () => {},
 });
 
 interface AuthProviderProps {
@@ -26,13 +22,11 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [userData, setUserData] = useState<userSession | null>(null);
 
-  console.log(userData);
-
   useEffect(() => {
     if (userData) {
       localStorage.setItem(
         "userSession",
-        JSON.stringify({ token: userData.token, userdata: userData })
+        JSON.stringify({ token: userData.token, userData: userData })
       );
     }
   }, [userData]);
@@ -44,8 +38,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
+  const logout = () => {
+    alert("¡Hasta la próxima!");
+    setUserData(null);
+    localStorage.removeItem("userSession");
+  };
+
   return (
-    <AuthContext.Provider value={{ userData, setUserData }}>
+    <AuthContext.Provider value={{ userData, setUserData, logout }}>
       {children}
     </AuthContext.Provider>
   );

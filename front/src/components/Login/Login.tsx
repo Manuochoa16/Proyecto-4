@@ -4,6 +4,7 @@ import { login } from "@/helpers/auth.helper";
 import { validateLoginForm } from "@/helpers/formValidation";
 import { LoginErrorProps, LoginProps } from "@/types";
 import { useRouter } from "next/navigation";
+import Link from "next/link"; // Añadir la importación de Link
 import React, { useState, useEffect } from "react";
 
 const Login = () => {
@@ -93,18 +94,19 @@ const Login = () => {
             )}
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center">
             <button
               type="submit"
-              className="px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600"
+              className="px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 mb-4"
             >
               Enviar
             </button>
-
-            <div>
-              <p>No estas registrado?</p>
-              <button>Registrate acá</button>
-            </div>
+            <p className="text-white">No estás registrado?</p>
+            <Link href="/register">
+              <button className="text-blue-500 hover:underline">
+                Regístrate acá
+              </button>
+            </Link>
           </div>
         </form>
       </div>

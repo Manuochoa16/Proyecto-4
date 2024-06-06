@@ -42,18 +42,22 @@ const DetailProduct = ({ params }: { params: { productId: string } }) => {
 
   return (
     <div className="w-full items-center justify-center flex flex-col">
-      <div className="w-1/2 items-center justify-center flex flex-col bg-gray-200 p-6 rounded my-4">
-        <h2>{product?.name}</h2>
-        <img src={product?.image} alt={product?.image} />
-        <p>{product?.description}</p>
-        <p>Price: {product?.price}</p>
-        <p>Stock: {product?.stock}</p>
+      <div className="w-full sm:w-3/4 md:w-1/2 items-center justify-center flex flex-col bg-gray-200 p-6 rounded my-4">
+        <h2 className="text-center text-2xl font-bold">{product?.name}</h2>
+        <img
+          className="w-full h-auto rounded mt-4"
+          src={product?.image}
+          alt={product?.image}
+        />
+        <p className="mt-4">{product?.description}</p>
+        <p className="mt-2 text-lg font-semibold">Price: ${product?.price}</p>
+        <p className="mt-2 text-lg">Stock: {product?.stock}</p>
         <button
           id={product?.id.toString()}
           onClick={handleAddToCart}
-          className="rounded-sm bg-white hover:bg-gray-400 text-black p-4 mt-2"
+          className="rounded-sm bg-white hover:bg-gray-400 text-black p-4 mt-4"
         >
-          Agerar al carrito
+          Agregar al carrito
         </button>
       </div>
     </div>

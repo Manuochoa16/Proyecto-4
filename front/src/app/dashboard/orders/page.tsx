@@ -26,14 +26,14 @@ const OrdersPage = () => {
 
   return (
     <div>
-      <h1>Orders: </h1>
+      <h1>Compras anteriores: </h1>
       {orders?.length > 0 ? (
         orders?.map((orden) => {
           return (
             <div key={orden.id}>
               <div>
                 <p>{new Date(orden.date).toLocaleDateString()}</p>
-                <p>Status: {orden.status}</p>
+                <p>Estado: {orden.status}</p>
               </div>
             </div>
           );

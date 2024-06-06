@@ -12,28 +12,23 @@ const Card: React.FC<IProduct> = ({
   categoryId,
 }) => {
   return (
-    <div className="flex justify-center w-full">
-      <div className="card-custom-height w-3/5 flex items-center bg-white bg-opacity-60 text-black rounded-xl p-6 border border-gray-300 shadow-md m-4">
+    <div className="w-full max-w-md mx-auto bg-white bg-opacity-60 text-black rounded-xl p-6 border border-gray-300 shadow-md my-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+      <div className="flex justify-center items-center">
         <img
-          className="w-auto h-[250px] object-cover rounded-xl"
+          className="h-52 w-full object-cover rounded-xl"
           src={image}
           alt="imagen del producto"
         />
-        <div className="w-3/4 pl-6">
-          <h2 className="text-red-600 text-lg font-bold">{name}</h2>
-          <p className="text-gray-600 mb-4">{description}</p>
-          <p className="text-gray-700">
-            Category: {categoriesToPreLoad[categoryId].name}
-          </p>
-          <p className="text-gray-700">Stock: {stock}</p>
-          <div>
-            <button className="px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600">
-              Ver
-            </button>
-          </div>
-          <div className="text-right text-red-600 text-xl font-bold mt-4">
-            ${price}
-          </div>
+      </div>
+      <div className="mt-4">
+        <h2 className="text-red-600 text-lg font-bold text-center">{name}</h2>
+        <p className="text-gray-600 mb-4 text-center">{description}</p>
+        <p className="text-gray-700 text-center">
+          Category: {categoriesToPreLoad[categoryId].name}
+        </p>
+        <p className="text-gray-700 text-center">Stock: {stock}</p>
+        <div className="text-right text-red-600 text-xl font-bold mt-4">
+          ${price}
         </div>
       </div>
     </div>

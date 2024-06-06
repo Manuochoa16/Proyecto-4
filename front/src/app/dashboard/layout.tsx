@@ -11,13 +11,21 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-      <div className="w-full flex flex-row items-center justify-end">
-        <div className="flex flex-row items-center gap-4 w-[24.7%]">
-          <Link href="/dashboard/orders">Orders</Link>
-          <Link href="/cart">Cart</Link>
+      <div className="w-full flex flex-row items-center justify-end p-4 bg-gray-800 text-white sm:flex-col sm:items-center sm:gap-2">
+        <div className="flex flex-row items-center gap-4 sm:flex-col sm:gap-2">
+          <Link href="/dashboard/orders" className="hover:text-red-400">
+            Compras anteriores
+          </Link>
+          <Link href="/cart" className="hover:text-red-400">
+            Carrito
+          </Link>
         </div>
       </div>
-      {children}
+      <div className="p-4">
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
+          {children}
+        </div>
+      </div>
     </>
   );
 }
