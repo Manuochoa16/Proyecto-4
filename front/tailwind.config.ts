@@ -12,7 +12,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "hero-pattern": "url('/fondo.webp')", // Agrega esta línea
+        "hero-pattern": "url('/fondo.webp')",
+      },
+      height: {
+        "128": "40rem",
       },
     },
   },

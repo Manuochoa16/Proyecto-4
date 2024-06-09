@@ -22,7 +22,7 @@ export default function DashboardLayout({
         </div>
       </div>
       <div className="p-4">
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
+        <div className="rounded-lg shadow-lg p-6 max-w-4xl mx-auto bg-white text-center">
           {children}
         </div>
       </div>

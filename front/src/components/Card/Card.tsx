@@ -12,10 +12,10 @@ const Card: React.FC<IProduct> = ({
   categoryId,
 }) => {
   return (
-    <div className="w-full max-w-md mx-auto bg-white bg-opacity-60 text-black rounded-xl p-6 border border-gray-300 shadow-md my-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-      <div className="flex justify-center items-center">
+    <div className="w-full max-w-md mx-auto bg-white bg-opacity-60 text-black rounded-xl p-6 border border-gray-300 shadow-md my-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl h-128">
+      <div className="flex justify-center items-center h-48">
         <img
-          className="h-52 w-full object-cover rounded-xl"
+          className="h-full w-auto object-cover rounded-xl"
           src={image}
           alt="imagen del producto"
         />

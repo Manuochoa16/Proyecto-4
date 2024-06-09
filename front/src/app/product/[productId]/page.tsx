@@ -45,7 +45,7 @@ const DetailProduct = ({ params }: { params: { productId: string } }) => {
       <div className="w-full sm:w-3/4 md:w-1/2 items-center justify-center flex flex-col bg-gray-200 p-6 rounded my-4">
         <h2 className="text-center text-2xl font-bold">{product?.name}</h2>
         <img
-          className="w-full h-auto rounded mt-4"
+          className="w-64 h-auto rounded mt-4"
           src={product?.image}
           alt={product?.image}
         />
